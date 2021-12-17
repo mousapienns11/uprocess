@@ -1,8 +1,10 @@
+import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../register/register_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -39,6 +41,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
       delay: 200,
+    ),
+    'containerOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      delay: 100,
+      fadeIn: true,
     ),
   };
 
@@ -407,8 +415,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       color: Colors.white,
                       size: 30,
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
+                    onPressed: () async {
+                      await signOut();
+                      await Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RegisterWidget(),
+                        ),
+                        (r) => false,
+                      );
                     },
                   ),
                 ],
@@ -595,7 +610,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       ),
                     ],
                   ),
-                ),
+                ).animated([animationsMap['containerOnPageLoadAnimation']]),
               ],
             ),
           ],

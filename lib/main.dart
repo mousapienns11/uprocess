@@ -6,7 +6,7 @@ import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import 'package:uprocess/registro/registro_widget.dart';
+import 'package:uprocess/register/register_widget.dart';
 import 'package:uprocess/home_page/home_page_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 
@@ -71,7 +71,7 @@ class _MyAppState extends State<MyApp> {
             )
           : currentUser.loggedIn
               ? HomePageWidget()
-              : RegistroWidget(),
+              : RegisterWidget(),
     );
   }
 }
